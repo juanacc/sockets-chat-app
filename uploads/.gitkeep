@@ -1,0 +1,3 @@
+// se agrega este archivo para que git le de seguimiento en el caso de que la carpeta uploads este vacia
+// Git no puede agregar un directorio completamente vacío . Las personas que desean rastrear directorios vacíos en Git han creado la convención de colocar archivos llamados .gitkeep 
+// en estos directorios. El archivo podría llamarse cualquier cosa; Git no asigna ningún significado especial a este nombre.
