@@ -31,43 +31,18 @@
             </button>
         </div>
         <div class="col-sm-6">
-
+            <h1 style="color: 747474">Custom login</h1>
+            <hr>
+            <form class="d-grid">
+                <input type="text" name="email" class="form-control mb-2" placeholder="Email">
+                <input type="password" name="password" class="form-control mb-2" placeholder="Password">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
         </div>
     </div>
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script>
-        let url = (window.location.hostname.includes('localhost')) ? 'http://localhost:8080/api/auth/google' : 'https://restserver-curso-node-jpa.herokuapp.com/api/auth/google';
-        function handleCredentialResponse(response) {
-            //Google Token:ID_TOKEN
-            console.log('id_token', response.credential);
-            const body = { id_token: response.credential };
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            })
-                .then(resp => resp.json())
-                .then(resp => {
-                    //seteo el email en el local storage ya que lo necesito para hacer el logout
-                    localStorage.setItem('email', resp.body.user.email);
-                    console.log(resp);
-                })
-                .catch(console.warn);
-        }
-        const button = document.getElementById('google_signout');
-        button.onclick = () => {
-            console.log(google.accounts.id);
-            google.accounts.id.disableAutoSelect();
-            google.accounts.id.revoke(localStorage.getItem('email'), done => {
-                localStorage.clear(); //limpio el correo electronico que tenia almacenado
-                location.reload(); //recargo la pagina
-            });
-        }
-    </script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>
