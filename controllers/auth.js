@@ -58,3 +58,9 @@ exports.googleSignIn = async (req, res = response) => {
         res.status(400).json(badRequest(googleTokenError));
     }
 }
+
+exports.renewToken = async (req, res = response) => {
+    const {user} = req;
+    const token = await generateJWT(user.id);
+    res.json({user, token});
+}

@@ -21,7 +21,8 @@ loginForm.addEventListener('submit', event => {
         console.log(data.body.token);
         if(data.statusCode !== 200)
             return console.error(data.body);
-        localStorage.setItem('token', data.body.token)
+        localStorage.setItem('token', data.body.token);
+        window.location = 'chat.html';
     })
     .catch(error => {
         console.log(error);
@@ -47,9 +48,11 @@ function handleCredentialResponse(response) {
             //console.log(resp);
             //console.log('TOKEN', resp.body.token);
             localStorage.setItem('token', resp.body.token);
+            window.location = 'chat.html';
         })
         .catch(console.warn);
 }
+
 const button = document.getElementById('google_signout');
 
 button.onclick = () => {
